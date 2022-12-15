@@ -17,7 +17,14 @@ class Controller {
   handleInputAmount(inputAmount) {
     this.#vendingMachine.setInputAmount(inputAmount);
     OutputView.printHoldingAmount(this.#vendingMachine.getDividedAmount());
+    this.requestProducts();
   }
+
+  requestProducts() {
+    InputView.readProducts((products) => this.handleProducts(products));
+  }
+
+  handleProducts(products) {}
 }
 
 module.exports = Controller;

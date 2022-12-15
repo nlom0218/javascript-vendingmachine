@@ -7,6 +7,10 @@ const InputView = {
       callback
     );
   },
+
+  readProducts(callback) {
+    Console.readLine('\n상품명과 가격, 수량을 입력해 주세요.\n', callback);
+  },
 };
 
 module.exports = InputView;

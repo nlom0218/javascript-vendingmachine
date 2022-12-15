@@ -30,6 +30,10 @@ class VendingMachine {
   setInputAmount(inputAmount) {
     this.#inputAmount = inputAmount;
   }
+
+  getInputAmount() {
+    return this.#inputAmount;
+  }
 }
 
 module.exports = VendingMachine;

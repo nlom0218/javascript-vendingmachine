@@ -37,7 +37,17 @@ class Controller {
 
   handleInputAmount(inputAmount) {
     this.#vendingMachine.setInputAmount(inputAmount);
+    this.requestPurchaseProduct();
   }
+
+  requestPurchaseProduct() {
+    OutputView.printInputAmount(this.#vendingMachine.getInputAmount());
+    InputView.readPurchaseProduct((purchaseProduct) =>
+      this.handlePurchaseProduct(purchaseProduct)
+    );
+  }
+
+  handlePurchaseProduct(purchaseProduct) {}
 }
 
 module.exports = Controller;

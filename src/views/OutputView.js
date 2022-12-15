@@ -9,6 +9,10 @@ const OutputView = {
       Console.print(`${coin} - ${dividedAmount[index]}개`);
     });
   },
+
+  printInputAmount(inputAmount) {
+    Console.print(`\n투입 금액: ${inputAmount}원`);
+  },
 };
 
 module.exports = OutputView;

@@ -18,6 +18,7 @@ class Controller {
   handleHoldingAmount(holdingAmount) {
     const isValid = Coin.validationHoldingAmount(holdingAmount);
     if (!isValid) return this.requestHoldingAmount();
+
     this.#vendingMachine.setHoldingAmount(holdingAmount);
     OutputView.printHoldingAmount(this.#vendingMachine.getDividedAmount());
     this.requestProducts();
@@ -30,6 +31,7 @@ class Controller {
   handleProducts(products) {
     const isValid = VendingMachine.validationProduct(products);
     if (!isValid) return this.requestProducts();
+
     this.#vendingMachine.setProducts(products);
     this.requestInputAmount();
   }
@@ -41,6 +43,9 @@ class Controller {
   }
 
   handleInputAmount(inputAmount) {
+    const isValid = this.#vendingMachine.validationInputAmount(inputAmount);
+    if (!isValid) return this.requestInputAmount();
+
     this.#vendingMachine.setInputAmount(inputAmount);
     this.requestPurchaseProduct();
   }

@@ -1,4 +1,5 @@
 const Coin = require('./Coin');
+const Product = require('./Product');
 
 class VendingMachine {
   #coin;
@@ -15,10 +16,8 @@ class VendingMachine {
   setProducts(products) {
     products = this.#productsConvertToArray(products);
     products.forEach(([name, price, count]) => {
-      this.#products.push({ name, price: Number(price), count: Number(count) });
+      this.#products.push(new Product({ name, price, count }));
     });
-
-    console.log(this.#products);
   }
 
   #productsConvertToArray(products) {

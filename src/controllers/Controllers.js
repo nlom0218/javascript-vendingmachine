@@ -1,6 +1,9 @@
+const VendingMachine = require('../models/VendingMachine');
 const { InputView } = require('../views/IOView');
 
 class Controller {
+  #vendingMachine = new VendingMachine();
+
   init() {
     this.requestInputAmount();
   }
@@ -12,7 +15,8 @@ class Controller {
   }
 
   handleInputAmount(inputAmount) {
-    console.log('투입 금액:' + inputAmount);
+    this.#vendingMachine.setInputAmount(inputAmount);
+    console.log(this.#vendingMachine.getDividedAmount());
   }
 }
 

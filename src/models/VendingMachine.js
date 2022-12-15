@@ -1,6 +1,5 @@
 const Coin = require('./Coin');
 const Product = require('./Product');
-const Convert = require('../libs/Convert');
 const errorHandler = require('../libs/errorHandler');
 const {
   ProductsValidator,
@@ -22,12 +21,20 @@ class VendingMachine {
   }
 
   setProducts(products) {
-    Convert.stringToArray(products).forEach(([name, price, count], idx) => {
-      if (idx === 0) this.#lowestProductAmount = Number(price);
-      if (price < this.#lowestProductAmount)
-        this.#lowestProductAmount = Number(price);
-      this.#products.push(new Product({ name, price, count }));
-    });
+    this.#productsConvertToArray(products).forEach(
+      ([name, price, count], idx) => {
+        if (idx === 0) this.#lowestProductAmount = Number(price);
+        if (price < this.#lowestProductAmount)
+          this.#lowestProductAmount = Number(price);
+        this.#products.push(new Product({ name, price, count }));
+      }
+    );
+  }
+
+  #productsConvertToArray(products) {
+    return products
+      .split(';')
+      .map((product) => product.slice(1, -1).split(','));
   }
 
   setInputAmount(inputAmount) {
@@ -36,10 +43,6 @@ class VendingMachine {
 
   getInputAmount() {
     return this.#inputAmount;
-  }
-
-  getLowestProductAmount() {
-    return this.#lowestProductAmount;
   }
 
   purchaseProduct(productName) {
@@ -68,9 +71,9 @@ class VendingMachine {
     return this.#coin.getChanges(this.#inputAmount);
   }
 
-  static validationProduct(products) {
+  validationProduct(products) {
     try {
-      Convert.stringToArray(products).forEach((product) => {
+      this.#productsConvertToArray(products).forEach((product) => {
         ProductsValidator.valitaion(product);
       });
     } catch (error) {

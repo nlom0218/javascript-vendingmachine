@@ -29,7 +29,7 @@ class Controller {
   }
 
   handleProducts(products) {
-    const isValid = VendingMachine.validationProduct(products);
+    const isValid = this.#vendingMachine.validationProduct(products);
     if (!isValid) return this.requestProducts();
 
     this.#vendingMachine.setProducts(products);

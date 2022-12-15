@@ -49,6 +49,9 @@ class Controller {
 
   handlePurchaseProduct(purchaseProduct) {
     this.#vendingMachine.purchaseProduct(purchaseProduct);
+    const isCanPurchase = this.#vendingMachine.isCanPurchase();
+    if (isCanPurchase) return this.requestPurchaseProduct();
+    console.log('잔돈 반환');
   }
 }
 

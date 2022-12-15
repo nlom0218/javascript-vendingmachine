@@ -10,10 +10,13 @@ class Product {
   }
 
   getPurchasedPrice(productName) {
-    console.log(this.#name);
     if (productName !== this.#name) return undefined;
     this.#count -= 1;
     return this.#price;
+  }
+
+  getCount() {
+    return this.#count;
   }
 }
 

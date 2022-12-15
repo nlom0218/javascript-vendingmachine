@@ -5,6 +5,7 @@ class VendingMachine {
   #coin;
   #products = [];
   #inputAmount;
+  #lowestProductAmount;
 
   setHoldingAmount(holdingAmount) {
     this.#coin = new Coin(holdingAmount);
@@ -16,7 +17,10 @@ class VendingMachine {
 
   setProducts(products) {
     products = this.#productsConvertToArray(products);
-    products.forEach(([name, price, count]) => {
+    products.forEach(([name, price, count], idx) => {
+      if (idx === 0) this.#lowestProductAmount = Number(price);
+      if (price < this.#lowestProductAmount)
+        this.#lowestProductAmount = Number(price);
       this.#products.push(new Product({ name, price, count }));
     });
   }
@@ -43,6 +47,18 @@ class VendingMachine {
       this.#inputAmount -= purchasedPrice;
       return true;
     });
+  }
+
+  isCanPurchase() {
+    if (this.#inputAmount < this.#lowestProductAmount) return false;
+
+    const isEmpty = this.#products.every((product) => {
+      if (product.getCount === 0) return true;
+      return false;
+    });
+    if (isEmpty) return false;
+
+    return true;
   }
 }
 

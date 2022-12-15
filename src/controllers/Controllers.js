@@ -26,6 +26,17 @@ class Controller {
 
   handleProducts(products) {
     this.#vendingMachine.setProducts(products);
+    this.requestInputAmount();
+  }
+
+  requestInputAmount() {
+    InputView.readInputAmount((inputAmount) =>
+      this.handleInputAmount(inputAmount)
+    );
+  }
+
+  handleInputAmount(inputAmount) {
+    this.#vendingMachine.setInputAmount(inputAmount);
   }
 }
 

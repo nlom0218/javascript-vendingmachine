@@ -4,6 +4,7 @@ const Product = require('./Product');
 class VendingMachine {
   #coin;
   #products = [];
+  #inputAmount;
 
   setHoldingAmount(holdingAmount) {
     this.#coin = new Coin(holdingAmount);
@@ -24,6 +25,10 @@ class VendingMachine {
     return products
       .split(';')
       .map((product) => product.slice(1, -1).split(','));
+  }
+
+  setInputAmount(inputAmount) {
+    this.#inputAmount = inputAmount;
   }
 }
 

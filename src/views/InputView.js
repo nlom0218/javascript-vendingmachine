@@ -11,6 +11,10 @@ const InputView = {
   readProducts(callback) {
     Console.readLine('\n상품명과 가격, 수량을 입력해 주세요.\n', callback);
   },
+
+  readInputAmount(callback) {
+    Console.readLine('\n투입 금액을 입력해 주세요.\n', callback);
+  },
 };
 
 module.exports = InputView;

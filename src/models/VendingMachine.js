@@ -53,7 +53,7 @@ class VendingMachine {
     if (this.#inputAmount < this.#lowestProductAmount) return false;
 
     const isEmpty = this.#products.every((product) => {
-      if (product.getCount === 0) return true;
+      if (product.getCount() === 0) return true;
       return false;
     });
     if (isEmpty) return false;

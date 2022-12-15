@@ -13,6 +13,13 @@ const OutputView = {
   printInputAmount(inputAmount) {
     Console.print(`\n투입 금액: ${inputAmount}원`);
   },
+
+  printChanges(changes) {
+    Console.print(`잔돈`);
+    changes.forEach(([amount, count]) => {
+      if (count > 0) Console.print(`${amount}원 - ${count}개`);
+    });
+  },
 };
 
 module.exports = OutputView;

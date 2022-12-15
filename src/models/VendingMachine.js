@@ -60,6 +60,10 @@ class VendingMachine {
 
     return true;
   }
+
+  getChanges() {
+    return this.#coin.getChanges(this.#inputAmount);
+  }
 }
 
 module.exports = VendingMachine;

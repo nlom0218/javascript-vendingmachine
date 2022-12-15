@@ -24,6 +24,28 @@ class Coin {
     const count = Math.floor(targetAmount / coin);
     return count;
   }
+
+  getChanges(inputAmount) {
+    return this.#calCoinsTypesAndCount().map(([amount, count]) => {
+      if (count === 0 || amount > inputAmount) return [amount, 0];
+      const maxCahgesCount = Math.floor(inputAmount / amount);
+      const changesCount = maxCahgesCount > count ? count : maxCahgesCount;
+      inputAmount -= amount * changesCount;
+      return [amount, changesCount];
+    });
+  }
+
+  #calCoinsTypesAndCount() {
+    const coinTypes = [
+      this.COIN_500,
+      this.COIN_100,
+      this.COIN_50,
+      this.COIN_10,
+    ];
+    return this.getDividedAmount().map((coin, index) => {
+      return [coinTypes[index], coin];
+    });
+  }
 }
 
 module.exports = Coin;

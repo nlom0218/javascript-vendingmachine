@@ -1,5 +1,5 @@
 const VendingMachine = require('../models/VendingMachine');
-const { InputView, OutputView } = require('../views/IOView');
+const { InputView, OutputView, exit } = require('../views/IOView');
 
 class Controller {
   #vendingMachine = new VendingMachine();
@@ -51,7 +51,13 @@ class Controller {
     this.#vendingMachine.purchaseProduct(purchaseProduct);
     const isCanPurchase = this.#vendingMachine.isCanPurchase();
     if (isCanPurchase) return this.requestPurchaseProduct();
-    console.log('잔돈 반환');
+    this.returnChange();
+  }
+
+  returnChange() {
+    OutputView.printInputAmount(this.#vendingMachine.getInputAmount());
+    OutputView.printChanges(this.#vendingMachine.getChanges());
+    exit();
   }
 }
 

@@ -34,6 +34,16 @@ class VendingMachine {
   getInputAmount() {
     return this.#inputAmount;
   }
+
+  purchaseProduct(productName) {
+    this.#products.some((product) => {
+      const purchasedPrice = product.getPurchasedPrice(productName);
+      if (!purchasedPrice) return;
+
+      this.#inputAmount -= purchasedPrice;
+      return true;
+    });
+  }
 }
 
 module.exports = VendingMachine;

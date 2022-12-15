@@ -47,7 +47,9 @@ class Controller {
     );
   }
 
-  handlePurchaseProduct(purchaseProduct) {}
+  handlePurchaseProduct(purchaseProduct) {
+    this.#vendingMachine.purchaseProduct(purchaseProduct);
+  }
 }
 
 module.exports = Controller;

@@ -5,8 +5,8 @@ class VendingMachine {
   #coin;
   #products = [];
 
-  setInputAmount(inputAmount) {
-    this.#coin = new Coin(inputAmount);
+  setHoldingAmount(holdingAmount) {
+    this.#coin = new Coin(holdingAmount);
   }
 
   getDividedAmount() {

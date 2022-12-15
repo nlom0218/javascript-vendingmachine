@@ -5,17 +5,17 @@ class Controller {
   #vendingMachine = new VendingMachine();
 
   init() {
-    this.requestInputAmount();
+    this.requestHoldingAmount();
   }
 
-  requestInputAmount() {
-    InputView.readInputAmount((inputAmount) =>
-      this.handleInputAmount(inputAmount)
+  requestHoldingAmount() {
+    InputView.readHoldingAmount((HoldingAmount) =>
+      this.handleHoldingAmount(HoldingAmount)
     );
   }
 
-  handleInputAmount(inputAmount) {
-    this.#vendingMachine.setInputAmount(inputAmount);
+  handleHoldingAmount(holdingAmount) {
+    this.#vendingMachine.setHoldingAmount(holdingAmount);
     OutputView.printHoldingAmount(this.#vendingMachine.getDividedAmount());
     this.requestProducts();
   }

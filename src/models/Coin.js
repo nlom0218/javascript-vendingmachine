@@ -5,8 +5,8 @@ class Coin {
   COIN_10 = 10;
   #amount;
 
-  constructor(inputAmount) {
-    this.#amount = Number(inputAmount);
+  constructor(holdingAmount) {
+    this.#amount = Number(holdingAmount);
   }
 
   getDividedAmount() {

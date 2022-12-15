@@ -52,7 +52,7 @@ class Coin {
 
   static validationHoldingAmount(holdingAmount) {
     try {
-      HoldingAmountValidator.valiation(holdingAmount);
+      HoldingAmountValidator.validation(holdingAmount);
     } catch (error) {
       errorHandler(error);
       return false;

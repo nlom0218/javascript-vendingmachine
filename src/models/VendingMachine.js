@@ -4,6 +4,7 @@ const errorHandler = require('../libs/errorHandler');
 const {
   ProductsValidator,
   InputAmountValidator,
+  PurchaseProductValidator,
 } = require('../libs/Validator');
 
 class VendingMachine {
@@ -74,7 +75,7 @@ class VendingMachine {
   validationProduct(products) {
     try {
       this.#productsConvertToArray(products).forEach((product) => {
-        ProductsValidator.valitaion(product);
+        ProductsValidator.validtaion(product);
       });
     } catch (error) {
       errorHandler(error);
@@ -91,6 +92,36 @@ class VendingMachine {
       return false;
     }
     return true;
+  }
+
+  validationPurchaseProduct(productName) {
+    try {
+      this.checkPurchaseProduct(productName);
+    } catch (error) {
+      errorHandler(error);
+      return false;
+    }
+    return true;
+  }
+
+  checkPurchaseProduct(productName) {
+    PurchaseProductValidator.validtaionName(productName, this.#products);
+    PurchaseProductValidator.validationPrice(
+      this.calPurchaseProductPrice(productName),
+      this.#inputAmount
+    );
+  }
+
+  calPurchaseProductPrice(productName) {
+    let productPrice;
+    this.#products.some((product) => {
+      const purchasedPrice = product.getPurchasedPrice(productName);
+      if (!purchasedPrice) return;
+
+      productPrice = purchasedPrice;
+      return true;
+    });
+    return productPrice;
   }
 }
 

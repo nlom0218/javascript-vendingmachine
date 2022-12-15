@@ -58,6 +58,10 @@ class Controller {
   }
 
   handlePurchaseProduct(purchaseProduct) {
+    const isValid =
+      this.#vendingMachine.validationPurchaseProduct(purchaseProduct);
+    if (!isValid) return this.requestPurchaseProduct();
+
     this.#vendingMachine.purchaseProduct(purchaseProduct);
     const isCanPurchase = this.#vendingMachine.isCanPurchase();
     if (isCanPurchase) return this.requestPurchaseProduct();

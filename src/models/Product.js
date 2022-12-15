@@ -18,6 +18,10 @@ class Product {
   getCount() {
     return this.#count;
   }
+
+  isMine(productName) {
+    return this.#name === productName;
+  }
 }
 
 module.exports = Product;

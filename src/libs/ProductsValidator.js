@@ -1,5 +1,5 @@
 const ProductsValidator = {
-  valitaion([_, price, count]) {
+  validtaion([_, price, count]) {
     ProductsValidator.isNumber(price, count);
     ProductsValidator.isGreaterThanMinAmount(price);
     ProductsValidator.isMultiplesOfTen(price);

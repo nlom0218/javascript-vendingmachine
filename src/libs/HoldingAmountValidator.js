@@ -1,5 +1,5 @@
 const HoldingAmountValidator = {
-  valiation(holdingAmount) {
+  validation(holdingAmount) {
     HoldingAmountValidator.isNumber(holdingAmount);
     HoldingAmountValidator.isMultiplesOfTen(holdingAmount);
   },

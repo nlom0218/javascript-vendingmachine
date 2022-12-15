@@ -12,7 +12,7 @@ const HoldingAmountValidator = {
 
   isMultiplesOfTen(holdingAmount) {
     if (holdingAmount % 10 !== 0)
-      throw new Error('[ERROR] 투입 금액은 10원 단위어야 합니다.');
+      throw new Error('[ERROR] 투입 금액은 10원으로 나누어떨어져야 합니다.');
   },
 };
 

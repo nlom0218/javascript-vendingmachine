@@ -11,7 +11,7 @@ const IOView = {
   },
 
   printError(error) {
-    Console.print(`\n${error}\n`);
+    Console.print(`\n${error}`);
   },
 };
 

@@ -24,7 +24,9 @@ class Controller {
     InputView.readProducts((products) => this.handleProducts(products));
   }
 
-  handleProducts(products) {}
+  handleProducts(products) {
+    this.#vendingMachine.setProducts(products);
+  }
 }
 
 module.exports = Controller;

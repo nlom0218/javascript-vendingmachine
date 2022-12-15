@@ -1,3 +1,4 @@
+const Coin = require('../models/Coin');
 const VendingMachine = require('../models/VendingMachine');
 const { InputView, OutputView, exit } = require('../views/IOView');
 
@@ -15,6 +16,8 @@ class Controller {
   }
 
   handleHoldingAmount(holdingAmount) {
+    const isValid = Coin.validationHoldingAmount(holdingAmount);
+    if (!isValid) return this.requestHoldingAmount();
     this.#vendingMachine.setHoldingAmount(holdingAmount);
     OutputView.printHoldingAmount(this.#vendingMachine.getDividedAmount());
     this.requestProducts();

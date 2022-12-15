@@ -1,3 +1,6 @@
+const errorHandler = require('../libs/errorHandler');
+const { HoldingAmountValidator } = require('../libs/Validator');
+
 class Coin {
   COIN_500 = 500;
   COIN_100 = 100;
@@ -45,6 +48,16 @@ class Coin {
     return this.getDividedAmount().map((coin, index) => {
       return [coinTypes[index], coin];
     });
+  }
+
+  static validationHoldingAmount(holdingAmount) {
+    try {
+      HoldingAmountValidator.valiation(holdingAmount);
+    } catch (error) {
+      errorHandler(error);
+      return false;
+    }
+    return true;
   }
 }
 

@@ -9,6 +9,10 @@ const IOView = {
   exit() {
     Console.close();
   },
+
+  printError(error) {
+    Console.print(`\n${error}\n`);
+  },
 };
 
 module.exports = IOView;
